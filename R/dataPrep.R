@@ -24,6 +24,9 @@ powerConsumption <- na.omit(powerConsumption)
 # Data conversion ---------------------------------------------------------
 
 powerConsumption <- transform(powerConsumption, Date = as.Date(Date, '%d/%m/%Y'))
+powerConsumption$dateTime <- strptime(paste(powerConsumption$Date,
+                                            powerConsumption$Time),
+                                            format = '%d/%m/%Y %H:%M:%S')
 
 
 # Extract Dates of interest and write to csv file -------------------------
